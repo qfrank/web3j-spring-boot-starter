@@ -49,7 +49,7 @@ public class Web3jHealthIndicator extends AbstractHealthIndicator {
                 futures.add(web3j.ethProtocolVersion()
                         .sendAsync()
                         .thenApply(ethProtocolVersion ->
-                                builder.withDetail("protocolVersion", ethProtocolVersion.getProtocolVersion())));
+                                builder.withDetail("protocolVersion", ethProtocolVersion.getProtocolVersion() == null? "" : ethProtocolVersion.getProtocolVersion())));
 
                 futures.add(web3j.netPeerCount()
                         .sendAsync()
